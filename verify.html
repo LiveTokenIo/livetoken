@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LIVE — Official Verification</title>
+  <meta name="robots" content="index,follow">
+  <link rel="icon" href="https://raw.githubusercontent.com/DawidWalczyk/livetoken/main/logo_live_final_orange_L.svg" type="image/svg+xml">
+  <meta property="og:title" content="LIVE — Official Verification">
+  <meta property="og:description" content="Official contact and checksum address for LIVE on BNB Smart Chain.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://raw.githubusercontent.com/DawidWalczyk/livetoken/main/logo_live_final_orange_L.svg">
+  <style>
+    :root { --bg:#0b1f24; --fg:#eaf2f3; --acc:#f59e0b; }
+    html,body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    .wrap{max-width:720px;margin:48px auto;padding:0 20px}
+    .card{background:#0f2430;border:1px solid #173041;border-radius:16px;padding:24px}
+    h1{margin:0 0 12px;font-size:28px}
+    code{font-family:ui-monospace,Menlo,Consolas,monospace}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--acc);color:#0b1f24;text-decoration:none;font-weight:600}
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+    .muted{opacity:.8}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="card">
+      <h1>LIVE — Official Verification</h1>
+
+      <p><strong>Official contact:</strong>
+        <a href="mailto:contact@livetoken.io" style="color:#fff">contact@livetoken.io</a>
+      </p>
+
+      <p><strong>Official contract (BNB Chain, checksum):</strong><br>
+        <code id="addr">0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf</code>
+        <button id="copy" class="btn" style="margin-left:10px;">Copy</button>
+      </p>
+
+      <div class="row">
+        <a class="btn" href="https://bscscan.com/token/0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf" target="_blank" rel="noopener">View on BscScan</a>
+        <a class="btn" href="https://github.com/DawidWalczyk/livetoken" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://x.com/live__token" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+
+      <p class="muted">Last updated: <span id="d"></span></p>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('d').textContent = new Date().toISOString().slice(0,10);
+    document.getElementById('copy').onclick = function () {
+      const t = document.createElement('textarea');
+      t.value = document.getElementById('addr').textContent;
+      document.body.appendChild(t);
+      t.select();
+      document.execCommand('copy');
+      document.body.removeChild(t);
+      this.textContent = 'Copied';
+      setTimeout(() => this.textContent = 'Copy', 1500);
+    };
+  </script>
+</body>
+</html>
