@@ -1,20 +1,125 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LiveToken (LIVE)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LIVE Token — BNB Smart Chain</title>
+  <meta name="description" content="LIVE is a community token on BNB Smart Chain focusing on simple tokenomics and transparent, open development." />
+  <link rel="icon" href="https://raw.githubusercontent.com/DawidWalczyk/livetoken/main/logo_live_final_orange_L.svg" type="image/svg+xml" />
+  <meta property="og:title" content="LIVE Token — BNB Smart Chain" />
+  <meta property="og:description" content="LIVE is a community token on BNB Smart Chain focusing on simple tokenomics and transparent, open development." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/DawidWalczyk/livetoken/main/logo_live_final_orange_L.svg" />
+  <meta property="og:type" content="website" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"LIVE",
+    "url":"https://livetoken.io",
+    "logo":"https://raw.githubusercontent.com/DawidWalczyk/livetoken/main/logo_live_final_orange_L.svg",
+    "sameAs":["https://x.com/live__token","https://github.com/DawidWalczyk/livetoken"],
+    "email":"contact@livetoken.io"
+  }
+  </script>
+  <style>.btn{display:inline-block;padding:.8rem 1.1rem;border-radius:.8rem;font-weight:700}</style>
 </head>
-<body style="font-family: sans-serif; max-width: 600px; margin: auto; padding: 2rem;">
-  <h1>LiveToken (LIVE)</h1>
-  <p><strong>BEP-20 token</strong> on BNB Smart Chain.</p>
-  <p>✅ 5% tax fee mechanism<br>
-     ✅ Auto-swap to BNB for marketing<br>
-     ✅ Liquidity on PancakeSwap</p>
-  <p>🔗 <a href="https://x.com/live__token?s=21&t=gKzF9VhGcaiotTs_hUlN8A" target="_blank">Twitter</a> •
-  <p>📧 Contact: <a href="mailto:contact@livetoken.io">contact@livetoken.io</a></p>
-  <p style="font-size: small; color: gray;">
-    This is the official LiveToken landing page, hosted on GitHub Pages.
-  </p>
+<body class="bg-slate-900 text-slate-100">
+  <!-- HERO -->
+  <header class="max-w-6xl mx-auto px-4 py-14 text-center space-y-6">
+    <img src="https://raw.githubusercontent.com/DawidWalczyk/livetoken/main/logo_live_final_orange_L.svg" alt="LIVE logo" class="w-24 h-24 mx-auto">
+    <h1 class="text-4xl font-extrabold tracking-tight">LIVE Token</h1>
+    <p class="max-w-2xl mx-auto text-slate-300">
+      Community token on <strong>BNB Smart Chain</strong>. Simple tokenomics, transparent on-chain activity and open development on GitHub.
+    </p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a id="buy" href="https://pancakeswap.finance/swap?outputCurrency=0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf" class="btn bg-amber-400 text-slate-900" target="_blank" rel="noopener">Buy on PancakeSwap</a>
+      <a href="https://bscscan.com/token/0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf" class="btn border border-slate-600" target="_blank" rel="noopener">View on BscScan</a>
+      <button id="copy" class="btn border border-slate-600">Copy Contract</button>
+    </div>
+    <code id="addr" class="block mt-2 text-sm opacity-90">0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf</code>
+    <p class="mt-4 text-sm"><a class="text-amber-300 hover:underline" href="/verify">Verify page</a></p>
+  </header>
+
+  <!-- CONTRACT + LINKS -->
+  <section class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-8">
+    <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
+      <h2 class="text-xl font-bold mb-3">Contract</h2>
+      <ul class="space-y-2 text-slate-300">
+        <li><span class="font-semibold">Checksum:</span> <span class="font-mono">0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf</span></li>
+        <li><span class="font-semibold">Chain:</span> BNB Smart Chain (BEP-20)</li>
+        <li><span class="font-semibold">Decimals:</span> <em>tbd</em></li>
+        <li><span class="font-semibold">Verification:</span> BscScan (in progress / done)</li>
+      </ul>
+    </div>
+    <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
+      <h2 class="text-xl font-bold mb-3">Links</h2>
+      <ul class="space-y-2">
+        <li><a class="text-amber-300 hover:underline" href="/verify" target="_blank" rel="noopener">/verify</a></li>
+        <li><a class="text-amber-300 hover:underline" href="https://x.com/live__token" target="_blank" rel="noopener">X (Twitter)</a></li>
+        <li><a class="text-amber-300 hover:underline" href="https://github.com/DawidWalczyk/livetoken" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a class="text-amber-300 hover:underline" href="https://dexscreener.com/bsc/PAIR_ADDRESS" target="_blank" rel="noopener">DexScreener (pair)</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TOKENOMICS -->
+  <section class="max-w-6xl mx-auto px-4 py-10">
+    <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
+      <h2 class="text-xl font-bold mb-4">Tokenomics</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="p-4 rounded-xl bg-slate-900/60">
+          <div class="text-slate-400 text-sm">Total Supply</div>
+          <div class="text-2xl font-bold">tbd</div>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/60">
+          <div class="text-slate-400 text-sm">Circulating</div>
+          <div class="text-2xl font-bold">tbd</div>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/60">
+          <div class="text-slate-400 text-sm">Taxes</div>
+          <div class="text-2xl font-bold">0% / 0%</div>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/60">
+          <div class="text-slate-400 text-sm">LP Lock</div>
+          <div class="text-2xl font-bold">
+            <a class="text-amber-300 hover:underline" href="https://app.pinksale.finance/pinklock/lock-record?search=LP_TOKEN_ADDRESS" target="_blank" rel="noopener">tbd</a>
+          </div>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-slate-300">
+        <strong>Methodology:</strong> circulating = total − burned − locked (team/treasury/LP). On-chain links will be added after liquidity is created and LP is locked.
+      </p>
+    </div>
+  </section>
+
+  <!-- HOW TO BUY -->
+  <section class="max-w-6xl mx-auto px-4 py-10">
+    <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
+      <h2 class="text-xl font-bold mb-4">How to buy</h2>
+      <ol class="list-decimal pl-6 space-y-2 text-slate-300">
+        <li>Install MetaMask and switch to <strong>BNB Smart Chain</strong>.</li>
+        <li>Fund your wallet with some <strong>BNB</strong> for gas.</li>
+        <li>Open PancakeSwap and import the LIVE contract address.</li>
+        <li>Swap BNB → LIVE. Start with a small amount first.</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer class="max-w-6xl mx-auto px-4 py-10 text-sm text-slate-400">
+    <p><strong>Contact:</strong> <a href="mailto:contact@livetoken.io" class="hover:underline">contact@livetoken.io</a></p>
+    <p class="mt-2">No investment advice. No promises of profit. DYOR.</p>
+    <p class="mt-2">© <span id="y"></span> LIVE</p>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById('copy').onclick = function(){
+      const t=document.createElement('textarea');
+      t.value=document.getElementById('addr').textContent;
+      document.body.appendChild(t); t.select(); document.execCommand('copy'); document.body.removeChild(t);
+      this.textContent='Copied'; setTimeout(()=>this.textContent='Copy Contract',1500);
+    };
+  </script>
 </body>
 </html>
