@@ -1,0 +1,17 @@
+{
+  "name": "LIVE Token List",
+  "logoURI": "https://raw.githubusercontent.com/DawidWalczyk/livetoken/main/logo_256.png",
+  "keywords": ["live", "bsc", "community"],
+  "timestamp": "2025-08-01T12:00:00+00:00",
+  "tokens": [
+    {
+      "chainId": 56,
+      "address": "0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf",
+      "name": "LiveToken",
+      "symbol": "LIVE",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/DawidWalczyk/livetoken/main/logo_256.png"
+    }
+  ],
+  "version": { "major": 1, "minor": 0, "patch": 0 }
+}
