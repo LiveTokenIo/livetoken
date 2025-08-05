@@ -72,8 +72,7 @@
         <li><a class="text-amber-300 hover:underline" href="/verify" target="_blank" rel="noopener">/verify</a></li>
         <li><a class="text-amber-300 hover:underline" href="https://x.com/live__token" target="_blank" rel="noopener">X (Twitter)</a></li>
         <li><a class="text-amber-300 hover:underline" href="https://github.com/DawidWalczyk/livetoken" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a class="text-amber-300 hover:underline" href="https://dexscreener.com/bsc/PAIR_ADDRESS" target="_blank" rel="noopener">DexScreener (pair)</a></li>
-      </ul>
+        <li><a class="text-amber-300 hover:underline" href="https://dexscreener.com/bsc/0xCfe40593aBA61281C96b3e447E762e343f9b55F9" target="_blank" rel="noopener">DexScreener (pair)</a></li>      </ul>
     </div>
   </section>
 
@@ -106,6 +105,60 @@
       </p>
     </div>
   </section>
+
+  <!-- LIVE CHART (lazy-loaded) -->
+<section class="max-w-6xl mx-auto px-4 py-10" id="live-chart">
+  <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
+    <h2 class="text-xl font-bold mb-4">Live chart</h2>
+
+    <!-- Lekki placeholder; iframe wstrzykiwany dopiero po przewinięciu -->
+    <div id="chartWrap"
+         style="position:relative;padding-top:56.25%;background:#0f172a;border-radius:12px;overflow:hidden">
+      <div id="chartLoader"
+           style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#94a3b8;font:500 14px/1.4 system-ui">
+        Loading chart…
+      </div>
+    </div>
+
+    <p class="mt-3 text-sm text-slate-400">
+      Open on
+      <a class="text-amber-300 hover:underline"
+         href="https://dexscreener.com/bsc/0xCfe40593aBA61281C96b3e447E762e343f9b55F9"
+         target="_blank" rel="noopener">DexScreener</a>.
+      <noscript>(JavaScript disabled – open the chart on DexScreener.)</noscript>
+    </p>
+  </div>
+</section>
+
+<script>
+  // Lazy-load wykresu DexScreener
+  (function () {
+    const url = "https://dexscreener.com/bsc/0xCfe40593aBA61281C96b3e447E762e343f9b55F9?embed=1&theme=dark";
+    const wrap = document.getElementById('chartWrap');
+    if (!wrap) return;
+
+    const load = () => {
+      if (wrap.dataset.loaded) return;
+      wrap.dataset.loaded = "1";
+      const iframe = document.createElement('iframe');
+      Object.assign(iframe.style, { position: "absolute", inset: "0", width: "100%", height: "100%", border: "0" });
+      iframe.loading = "lazy";
+      iframe.src = url;
+      wrap.appendChild(iframe);
+      const loader = document.getElementById('chartLoader');
+      if (loader) loader.remove();
+    };
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        if (entries.some(e => e.isIntersecting)) { load(); io.disconnect(); }
+      }, { rootMargin: '200px' });
+      io.observe(wrap);
+    } else {
+      load();
+    }
+  })();
+</script>
 
   <!-- HOW TO BUY -->
   <section class="max-w-6xl mx-auto px-4 py-10">
