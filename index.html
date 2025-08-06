@@ -82,29 +82,47 @@
     <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
       <h2 class="text-xl font-bold mb-4">Tokenomics</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="p-4 rounded-xl bg-slate-900/60">
-          <div class="text-slate-400 text-sm">Total Supply</div>
-          <div class="text-2xl font-bold">1 000 000 000</div>
-        </div>
-        <div class="p-4 rounded-xl bg-slate-900/60">
-          <div class="text-slate-400 text-sm">Circulating</div>
-          <div class="text-2xl font-bold">tbd</div>
-        </div>
-        <div class="p-4 rounded-xl bg-slate-900/60">
-          <div class="text-slate-400 text-sm">Taxes</div>
-          <div class="text-2xl font-bold">5% / 5%</div>
-        </div>
-        <div class="p-4 rounded-xl bg-slate-900/60">
-          <div class="text-slate-400 text-sm">LP Lock</div>
-          <div class="text-2xl font-bold">planned</div>
-            <a class="text-amber-300 hover:underline" href="https://app.pinksale.finance/pinklock/lock-record?search=LP_TOKEN_ADDRESS" target="_blank" rel="noopener">tbd</a>
-          </div>
-        </div>
-      </div>
-      <p class="mt-4 text-sm text-slate-300">
-        <strong>Methodology:</strong> circulating = total − burned − locked (team/treasury/LP). On-chain links will be added after liquidity is created and LP is locked.
-      </p>
+  <!-- Total Supply -->
+  <div class="p-4 rounded-xl bg-slate-900/60">
+    <div class="text-slate-400 text-sm">Total Supply</div>
+    <div class="text-2xl font-bold">1 000 000 000</div>
+  </div>
+
+  <!-- Circulating -->
+  <div class="p-4 rounded-xl bg-slate-900/60">
+    <div class="text-slate-400 text-sm">Circulating <span class="text-xs text-slate-400">(excl. LP & locks)</span></div>
+    <div class="text-2xl font-bold">≈ 780 000 000</div>
+    <div class="mt-1 text-xs text-slate-400">= total − LP − locked</div>
+  </div>
+
+  <!-- Taxes -->
+  <div class="p-4 rounded-xl bg-slate-900/60">
+    <div class="text-slate-400 text-sm">Taxes</div>
+    <div class="text-2xl font-bold">5% / 5%</div>
+  </div>
+
+  <!-- LP Lock -->
+  <div class="p-4 rounded-xl bg-slate-900/60">
+    <div class="text-slate-400 text-sm">LP Lock</div>
+
+    <!-- status „unlocked” teraz; po blokadzie zmienimy na „locked until …” -->
+    <div class="text-2xl font-bold flex items-center gap-2">
+      <span class="inline-flex items-center rounded-md px-2 py-0.5 text-sm bg-red-500/20 text-red-300 border border-red-500/30">
+        unlocked
+      </span>
     </div>
+
+    <div class="mt-2 text-sm">
+      <a class="text-amber-300 hover:underline"
+         href="https://app.pinksale.finance/pinklock/create?chain=BSC&token=0xCfe40593aBA61281C96b3e447E762e343f9b55F9"
+         target="_blank" rel="noopener">Lock LP now</a>
+      <span class="text-slate-400 text-xs block mt-1">
+        Seeded: 220,000,000 LIVE ↔ ~0.264 BNB<br>
+        Pair: 0xCfe40593aBA61281C96b3e447E762e343f9b55F9
+      </span>
+    </div>
+  </div>
+</div>
   </section>
 
 <!-- LIVE CHARTS (DexScreener + DexTools, lazy-loaded with tab switch) -->
