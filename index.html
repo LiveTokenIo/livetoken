@@ -82,47 +82,95 @@
     <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
       <h2 class="text-xl font-bold mb-4">Tokenomics</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
   <!-- Total Supply -->
   <div class="p-4 rounded-xl bg-slate-900/60">
     <div class="text-slate-400 text-sm">Total Supply</div>
-    <div class="text-2xl font-bold">1 000 000 000</div>
+    <div class="text-2xl font-bold" id="totSupply">1 000 000 000</div>
   </div>
 
-  <!-- Circulating -->
+  <!-- Circulating (auto wyliczy się, gdy podamy LOCKED/BURNED/IN_LP) -->
   <div class="p-4 rounded-xl bg-slate-900/60">
-    <div class="text-slate-400 text-sm">Circulating <span class="text-xs text-slate-400">(excl. LP & locks)</span></div>
-    <div class="text-2xl font-bold">≈ 780 000 000</div>
-    <div class="mt-1 text-xs text-slate-400">= total − LP − locked</div>
+    <div class="text-slate-400 text-sm">
+      Circulating <span class="text-xs text-slate-400">(excl. LP &amp; locks)</span>
+    </div>
+    <div class="text-2xl font-bold" id="circulating">tbd</div>
+    <div class="mt-1 text-xs text-slate-400" id="circNote">Set after lock/burn</div>
   </div>
 
   <!-- Taxes -->
   <div class="p-4 rounded-xl bg-slate-900/60">
     <div class="text-slate-400 text-sm">Taxes</div>
-    <div class="text-2xl font-bold">5% / 5%</div>
+    <div class="text-2xl font-bold"><span id="taxBuy">5</span>% / <span id="taxSell">5</span>%</div>
   </div>
 
   <!-- LP Lock -->
   <div class="p-4 rounded-xl bg-slate-900/60">
     <div class="text-slate-400 text-sm">LP Lock</div>
-
-    <!-- status „unlocked” teraz; po blokadzie zmienimy na „locked until …” -->
     <div class="text-2xl font-bold flex items-center gap-2">
-      <span class="inline-flex items-center rounded-md px-2 py-0.5 text-sm bg-red-500/20 text-red-300 border border-red-500/30">
+      <span id="lpStatus"
+            class="inline-flex items-center rounded-md px-2 py-0.5 text-sm bg-red-500/20 text-red-300 border border-red-500/30">
         unlocked
       </span>
     </div>
 
     <div class="mt-2 text-sm">
-      <a class="text-amber-300 hover:underline"
+      <a id="lpLink" class="text-amber-300 hover:underline"
          href="https://app.pinksale.finance/pinklock/create?chain=BSC&token=0xCfe40593aBA61281C96b3e447E762e343f9b55F9"
          target="_blank" rel="noopener">Lock LP now</a>
-      <span class="text-slate-400 text-xs block mt-1">
+      <span class="text-slate-400 text-xs block mt-1" id="lpSeed">
         Seeded: 220,000,000 LIVE ↔ ~0.264 BNB<br>
         Pair: 0xCfe40593aBA61281C96b3e447E762e343f9b55F9
       </span>
     </div>
   </div>
+
 </div>
+
+      <script>
+  // KONFIG – jedyne miejsce do edycji, gdy coś się zmieni:
+  const TOTAL_SUPPLY = 1_000_000_000;
+  const IN_LP       = 220_000_000; // LIVE w puli (z Twojej transakcji seed)
+  const LOCKED      = 0;           // uzupełnimy po locku
+  const BURNED      = 0;           // uzupełnimy po burnie (jeśli będzie)
+  const TAX_BUY     = 5;
+  const TAX_SELL    = 5;
+
+  // Status i link do locka (po locku podmienimy):
+  const LP_STATUS   = 'unlocked'; // np. 'locked until 2026-02-01'
+  const LP_LINK     = 'https://app.pinksale.finance/pinklock/create?chain=BSC&token=0xCfe40593aBA61281C96b3e447E762e343f9b55F9';
+
+  // Render:
+  const fmt = n => n.toLocaleString('en-US');
+
+  // Taxes
+  const tB = document.getElementById('taxBuy');
+  const tS = document.getElementById('taxSell');
+  if (tB) tB.textContent = TAX_BUY;
+  if (tS) tS.textContent = TAX_SELL;
+
+  // LP badge + link
+  const lpBadg = document.getElementById('lpStatus');
+  const lpLink = document.getElementById('lpLink');
+  if (lpBadg) {
+    lpBadg.textContent = LP_STATUS;
+    // zielony badge, gdy locked
+    if (LP_STATUS.toLowerCase().startsWith('locked')) {
+      lpBadg.className =
+        "inline-flex items-center rounded-md px-2 py-0.5 text-sm bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+    }
+  }
+  if (lpLink) lpLink.href = LP_LINK;
+
+  // Circulating — pokazujemy liczbę dopiero, gdy mamy dane do wyliczenia
+  const circEl  = document.getElementById('circulating');
+  const noteEl  = document.getElementById('circNote');
+  if ((LOCKED || BURNED || IN_LP) && circEl) {
+    const circulating = TOTAL_SUPPLY - (LOCKED + BURNED + IN_LP);
+    circEl.textContent = fmt(Math.max(0, circulating));
+    if (noteEl) noteEl.textContent = 'total − burned − locked − LP';
+  }
+</script>
   </section>
 
 <!-- LIVE CHARTS (DexScreener + DexTools, lazy-loaded with tab switch) -->
