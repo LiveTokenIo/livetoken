@@ -1,344 +1,202 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LIVE Token — BNB Smart Chain</title>
-  <meta name="description" content="LIVE is a community token on BNB Smart Chain focusing on simple tokenomics and transparent, open development." />
+  <title>LIVE Token — Official One-Pager</title>
 
-  <link rel="icon" href="https://raw.githubusercontent.com/LiveTokenIo/livetoken/main/logo_live_final_orange_L.svg" type="image/svg+xml" />
+  <!-- SEO / Social -->
+  <meta name="description" content="LIVE Token on BNB Chain. Verified contract. Simple tokenomics. Join the 30-day growth journey.">
+  <meta property="og:title" content="LIVE Token — Official One-Pager">
+  <meta property="og:description" content="Verified contract on BNB Chain. Simple tokenomics. Join our 30-day growth journey.">
+  <meta property="og:image" content="/og-day1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/logo_256.png">
 
-  <meta property="og:title" content="LIVE Token — BNB Smart Chain" />
-  <meta property="og:description" content="LIVE is a community token on BNB Smart Chain focusing on simple tokenomics and transparent, open development." />
-  <!-- Prefer PNG for social cards; upload logo_og.png (1200x630) when ready -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/LiveTokenIo/livetoken/main/logo_og.png" />
-  <meta property="og:type" content="website" />
-
+  <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"LIVE",
-    "url":"https://livetoken.io",
-    "logo":"https://raw.githubusercontent.com/LiveTokenIo/livetoken/main/logo_live_final_orange_L.svg",
-    "sameAs":["https://x.com/live__token","https://github.com/LiveTokenIo/livetoken"],
-    "email":"contact@livetoken.io"
-  }
-  </script>
-
-  <style>.btn{display:inline-block;padding:.8rem 1.1rem;border-radius:.8rem;font-weight:700}</style>
+  <style>
+    .container-narrow{max-width:72rem;margin-left:auto;margin-right:auto}
+  </style>
 </head>
 <body class="bg-slate-900 text-slate-100">
-  <!-- HERO -->
-  <header class="max-w-6xl mx-auto px-4 py-14 text-center space-y-6">
-    <img src="https://raw.githubusercontent.com/LiveTokenIo/livetoken/main/logo_live_final_orange_L.svg" alt="LIVE logo" class="w-24 h-24 mx-auto">
+
+<!-- ===================== CONFIG (JEDYNE MIEJSCE DO PODMIANY) ===================== -->
+<script>
+  // ⬅️ WSTAW TU ADRES KONTRAKTU (checksummed) – JEDNA PODMIANA I KONIEC
+  const CONTRACT = "0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf";
+
+  // (opcjonalnie) adres pary LP – jeśli zmienisz parę, podmień tu
+  const PAIR = "0xCfe40593aBA61281C96b3e447E762e343f9b55F9"; // LIVE/WBNB (Pancake V2)
+
+  // Linki z kontraktu
+  const LINKS = {
+    swap: `https://pancakeswap.finance/swap?outputCurrency=${CONTRACT}`,
+    bscscan: `https://bscscan.com/address/${CONTRACT}`,
+    pairInfo: `https://pancakeswap.finance/info/pair/${PAIR}`,
+    dexscreener: `https://dexscreener.com/bsc/${PAIR}`,
+    dextools: `https://www.dextools.io/app/en/bnb/pair-explorer/${PAIR}`,
+    twitter: "https://x.com/Live__Token",
+    github: "https://github.com/LiveTokenIo/livetoken",
+    verify: "/verify"
+  };
+</script>
+<!-- ============================================================================= -->
+
+<header class="container-narrow px-4 pt-10 pb-6">
+  <div class="max-w-2xl">
+    <img src="https://raw.githubusercontent.com/LiveTokenIo/livetoken/main/logo_live_final_orange_L.svg"
+         alt="LIVE logo" class="w-24 h-24 mb-6">
     <h1 class="text-4xl font-extrabold tracking-tight">LIVE Token</h1>
-    <p class="max-w-2xl mx-auto text-slate-300">
-      Community token on <strong>BNB Smart Chain</strong>. Simple tokenomics, transparent on-chain activity and open development on GitHub.
-    </p>
-    <div class="flex flex-wrap justify-center gap-3">
-      <a id="buy"
-         href="https://pancakeswap.finance/swap?chain=bsc&outputCurrency=0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf"
-         class="btn bg-amber-400 text-slate-900"
-         target="_blank" rel="noopener">
-        Buy on PancakeSwap
-      </a>
-      <a href="https://bscscan.com/token/0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf"
-         class="btn border border-slate-600"
-         target="_blank" rel="noopener">View on BscScan</a>
-      <button id="copy" class="btn border border-slate-600">Copy Contract</button>
-    </div>
-    <code id="addr" class="block mt-2 text-sm opacity-90">0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf</code>
-    <p class="mt-4 text-sm"><a class="text-amber-300 hover:underline" href="/verify">Verify page</a></p>
-  </header>
+    <p class="text-slate-300 mt-2">Community token on <span class="font-semibold">BNB Smart Chain</span>.
+      Simple tokenomics, transparent on-chain activity and open development on GitHub.</p>
 
-  <!-- CONTRACT + LINKS -->
-  <section class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-8">
-    <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-      <h2 class="text-xl font-bold mb-3">Contract</h2>
-      <ul class="space-y-2 text-slate-300">
-        <li><span class="font-semibold">Checksum:</span> <span class="font-mono">0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf</span></li>
-        <li><span class="font-semibold">Chain:</span> BNB Smart Chain (BEP-20)</li>
-        <li><span class="font-semibold">Decimals:</span> <em>tbd</em></li>
-        <li><span class="font-semibold">Verification:</span> BscScan (in progress / done)</li>
-      </ul>
-    </div>
-    <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-      <h2 class="text-xl font-bold mb-3">Links</h2>
-      <ul class="space-y-2">
-        <li><a class="text-amber-300 hover:underline" href="/verify" target="_blank" rel="noopener">/verify</a></li>
-        <li><a class="text-amber-300 hover:underline" href="https://x.com/live__token" target="_blank" rel="noopener">X (Twitter)</a></li>
-        <li><a class="text-amber-300 hover:underline" href="https://github.com/LiveTokenIo/livetoken" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a class="text-amber-300 hover:underline" href="./docs/LIVE_Whitepaper_Lite_v1.pdf" target="_blank" rel="noopener">📄 LIVE Whitepaper (PDF)</a></li>
+    <!-- HERO BUTTONS -->
+    <div id="hero-buttons" class="mt-6 flex flex-wrap gap-4"></div>
 
-        <li><a class="text-amber-300 hover:underline" href="https://dexscreener.com/bsc/0xCfe40593aBA61281C96b3e447E762e343f9b55F9" target="_blank" rel="noopener">DexScreener (pair)</a></li>      </ul>
-        <li><a class="text-amber-300 hover:underline" href="https://www.dextools.io/app/en/bnb/pair-explorer/0xCfe40593aBA61281C96b3e447E762e343f9b55F9" target="_blank" rel="noopener">DexTools (pair)</a></li>
+    <!-- Adres kontraktu -->
+    <div class="mt-4">
+      <div class="text-slate-400 text-sm">Contract (checksummed)</div>
+      <code id="addr" class="block mt-1 text-sm opacity-90"></code>
+      <p class="mt-3 text-sm"><a class="text-amber-300 hover:underline" href="/verify">Verify page</a></p>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- ROADMAP -->
-<section class="max-w-6xl mx-auto px-4 py-10">
+<!-- CONTRACT + LINKS -->
+<section class="container-narrow px-4 py-6 grid md:grid-cols-2 gap-8">
+  <!-- Contract card -->
   <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-    <h2 class="text-xl font-bold mb-4">Roadmap</h2>
-    <img
-      src="./docs/roadmap.png"
-      alt="LIVE Token Roadmap"
-      class="w-full max-w-6xl mx-auto rounded-xl shadow-lg object-contain"
-      width="1920" height="1056"
-      loading="lazy" decoding="async">
-    <p class="mt-3 text-sm text-slate-400 text-center">
-      Our development journey ahead 🚀
-    </p>
+    <h2 class="text-xl font-bold mb-3">Contract</h2>
+    <ul class="space-y-2 text-slate-300">
+      <li><span class="font-semibold">Checksum:</span> <span id="checksum" class="font-mono"></span></li>
+      <li><span class="font-semibold">Chain:</span> BNB Smart Chain (BEP-20)</li>
+      <li><span class="font-semibold">Decimals:</span> 18</li>
+      <li><span class="font-semibold">Verification:</span> Verified on BscScan</li>
+    </ul>
+  </div>
+
+  <!-- Links card -->
+  <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
+    <h2 class="text-xl font-bold mb-3">Links</h2>
+    <ul class="space-y-2">
+      <li><a class="text-amber-300 hover:underline" id="lnk-verify" target="_blank" rel="noopener">Verify</a></li>
+      <li><a class="text-amber-300 hover:underline" id="lnk-twitter" target="_blank" rel="noopener">X (Twitter)</a></li>
+      <li><a class="text-amber-300 hover:underline" id="lnk-github" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a class="text-amber-300 hover:underline" id="lnk-swap" target="_blank" rel="noopener">Buy on PancakeSwap</a></li>
+      <li><a class="text-amber-300 hover:underline" id="lnk-pair" target="_blank" rel="noopener">LIVE/WBNB pair (Pancake V2)</a></li>
+      <li><a class="text-amber-300 hover:underline" id="lnk-dexs" target="_blank" rel="noopener">Dexscreener (pair)</a></li>
+      <li><a class="text-amber-300 hover:underline" id="lnk-dext" target="_blank" rel="noopener">Dextools (pair)</a></li>
+    </ul>
   </div>
 </section>
 
-  <!-- TOKENOMICS -->
-  <section class="max-w-6xl mx-auto px-4 py-10">
-    <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-      <h2 class="text-xl font-bold mb-4">Tokenomics</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-
-  <!-- Total Supply -->
-  <div class="p-4 rounded-xl bg-slate-900/60">
-    <div class="text-slate-400 text-sm">Total Supply</div>
-    <div class="text-2xl font-bold" id="totSupply">1 000 000 000</div>
+<!-- TOKENOMICS / LP -->
+<section class="container-narrow px-4 pb-6 grid md:grid-cols-2 gap-8">
+  <!-- Tokenomics -->
+  <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+    <div class="text-slate-400 text-sm">Tokenomics</div>
+    <ul class="list-disc ml-6 mt-2">
+      <li>2% Owner (development)</li>
+      <li>2% Marketing &amp; Community</li>
+      <li>1% Burn</li>
+      <li>95% Circulating Supply</li>
+    </ul>
   </div>
 
-  <!-- Circulating (auto wyliczy się, gdy podamy LOCKED/BURNED/IN_LP) -->
-  <div class="p-4 rounded-xl bg-slate-900/60">
-    <div class="text-slate-400 text-sm">
-      Circulating <span class="text-xs text-slate-400">(excl. LP &amp; locks)</span>
-    </div>
-    <div class="text-2xl font-bold" id="circulating">tbd</div>
-    <div class="mt-1 text-xs text-slate-400" id="circNote">Set after lock/burn</div>
-  </div>
-
-  <!-- Taxes -->
-  <div class="p-4 rounded-xl bg-slate-900/60">
-    <div class="text-slate-400 text-sm">Taxes</div>
-    <div class="text-2xl font-bold"><span id="taxBuy">5</span>% / <span id="taxSell">5</span>%</div>
-  </div>
-
-  <!-- LP Lock -->
-  <div class="p-4 rounded-xl bg-slate-900/60">
-    <div class="text-slate-400 text-sm">LP Lock</div>
-    <div class="text-2xl font-bold flex items-center gap-2">
+  <!-- LP / Liquidity -->
+  <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
+    <div class="text-slate-400 text-sm">LP / Liquidity</div>
+    <div class="text-2xl font-bold flex items-center gap-2 mt-1">
       <span id="lpStatus"
-            class="inline-flex items-center rounded-md px-2 py-0.5 text-sm bg-red-500/20 text-red-300 border border-red-500/30">
-        unlocked
+            class="inline-flex items-center rounded-md px-2 py-0.5 text-sm bg-yellow-500/20 text-yellow-400">
+        planned (lock in progress)
       </span>
     </div>
-
     <div class="mt-2 text-sm">
-      <a id="lpLink" class="text-amber-300 hover:underline"
-         href="https://app.pinksale.finance/pinklock/create?chain=BSC&token=0xCfe40593aBA61281C96b3e447E762e343f9b55F9"
-         target="_blank" rel="noopener">Lock LP now</a>
+      <a id="lpLink" class="text-amber-300 hover:underline" target="_blank" rel="noopener">LIVE/WBNB pair (Pancake V2)</a>
       <span class="text-slate-400 text-xs block mt-1">
-       Seeded: 441,014,000 LIVE ↔ ~0.533 BNB<br>
-       Pair: 0xCfe40593aBA61281C96b3e447E762e343f9b55F9
-     </span>
+        Liquidity Pool Token Allocation: <strong>63.56%</strong> of supply in pools
+      </span>
+      <span class="text-slate-400 text-xs block">
+        Current LP Value (est.): <strong>~$777.08</strong> <em>(source: Mudra)</em>
+      </span>
     </div>
-  </div>
-
-</div>
-
-      <script>
-  // KONFIG – jedyne miejsce do edycji, gdy coś się zmieni:
-  const TOTAL_SUPPLY = 1_000_000_000;
-  const IN_LP       = 220_000_000; // LIVE w puli (z Twojej transakcji seed)
-  const LOCKED      = 0;           // uzupełnimy po locku
-  const BURNED      = 0;           // uzupełnimy po burnie (jeśli będzie)
-  const TAX_BUY     = 5;
-  const TAX_SELL    = 5;
-
-  // Status i link do locka (po locku podmienimy):
-  const LP_STATUS   = 'unlocked'; // np. 'locked until 2026-02-01'
-  const LP_LINK     = 'https://app.pinksale.finance/pinklock/create?chain=BSC&token=0xCfe40593aBA61281C96b3e447E762e343f9b55F9';
-
-  // Render:
-  const fmt = n => n.toLocaleString('en-US');
-
-  // Taxes
-  const tB = document.getElementById('taxBuy');
-  const tS = document.getElementById('taxSell');
-  if (tB) tB.textContent = TAX_BUY;
-  if (tS) tS.textContent = TAX_SELL;
-
-  // LP badge + link
-  const lpBadg = document.getElementById('lpStatus');
-  const lpLink = document.getElementById('lpLink');
-  if (lpBadg) {
-    lpBadg.textContent = LP_STATUS;
-    // zielony badge, gdy locked
-    if (LP_STATUS.toLowerCase().startsWith('locked')) {
-      lpBadg.className =
-        "inline-flex items-center rounded-md px-2 py-0.5 text-sm bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
-    }
-  }
-  if (lpLink) lpLink.href = LP_LINK;
-
-  // Circulating — pokazujemy liczbę dopiero, gdy mamy dane do wyliczenia
-  const circEl  = document.getElementById('circulating');
-  const noteEl  = document.getElementById('circNote');
-  if ((LOCKED || BURNED || IN_LP) && circEl) {
-    const circulating = TOTAL_SUPPLY - (LOCKED + BURNED + IN_LP);
-    circEl.textContent = fmt(Math.max(0, circulating));
-    if (noteEl) noteEl.textContent = 'total − burned − locked − LP';
-  }
-</script>
-  </section>
-
-<!-- LIVE CHARTS (DexScreener + DexTools, lazy-loaded with tab switch) -->
-<section class="max-w-6xl mx-auto px-4 py-10" id="live-charts">
-  <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-    <h2 class="text-xl font-bold mb-4">Live charts</h2>
-
-    <!-- tabs -->
-    <div class="flex gap-2 mb-4">
-      <button id="btnDexS"
-              class="btn border border-slate-600 bg-amber-400 text-slate-900">
-        DexScreener
-      </button>
-      <button id="btnDexT"
-              class="btn border border-slate-600">
-        DexTools
-      </button>
-    </div>
-
-    <!-- container + loader -->
-    <div id="chartBox"
-         style="position:relative;padding-top:56.25%;background:#0f172a;border-radius:12px;overflow:hidden">
-      <div id="chartLoader"
-           style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#94a3b8;font:500 14px/1.4 system-ui">
-        Loading chart…
-      </div>
-
-      <!-- oba iframy, src nadamy dopiero przy użyciu -->
-      <iframe id="frameDexS" loading="lazy" title="DexScreener chart"
-              style="position:absolute;inset:0;width:100%;height:100%;border:0" hidden></iframe>
-      <iframe id="frameDexT" loading="lazy" title="DexTools chart"
-              style="position:absolute;inset:0;width:100%;height:100%;border:0" hidden></iframe>
-    </div>
-
-    <p class="mt-3 text-sm text-slate-400">
-      Open on
-      <a class="text-amber-300 hover:underline"
-         href="https://dexscreener.com/bsc/0xCfe40593aBA61281C96b3e447E762e343f9b55F9"
-         target="_blank" rel="noopener">DexScreener</a>
-      •
-      <a class="text-amber-300 hover:underline"
-         href="https://www.dextools.io/app/en/bnb/pair-explorer/0xCfe40593aBA61281C96b3e447E762e343f9b55F9"
-         target="_blank" rel="noopener">DexTools</a>.
-      <noscript>(JavaScript disabled – open the chart on DexScreener/DexTools.)</noscript>
-    </p>
   </div>
 </section>
 
+<!-- ROADMAP -->
+<section class="container-narrow px-4 pb-12">
+  <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
+    <h2 class="text-xl font-bold mb-3">Roadmap</h2>
+    <ul class="list-disc ml-6 mt-2">
+      <li>Phase 1 — Launch &amp; Community</li>
+      <li>Phase 2 — Listings (DEX + CMC/CG) &amp; Marketing Push</li>
+      <li>Phase 3 — Partnerships &amp; Ecosystem Growth</li>
+      <li>Phase 4 — Utilities &amp; Expansion</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="border-t border-slate-800 py-6 text-center text-slate-400 text-sm">
+  <div class="container-narrow px-4">
+    © <span id="year"></span> LIVE Token — GM 🌞 WAGMI 🚀
+  </div>
+</footer>
+
+<!-- ===================== BOOTSTRAP JS (wstrzykuje linki i przyciski) ===================== -->
 <script>
   (function () {
-    const pair = "0xCfe40593aBA61281C96b3e447E762e343f9b55F9";
+    // wypełnij widoczne pola
+    document.getElementById('addr').textContent = CONTRACT;
+    document.getElementById('checksum').textContent = CONTRACT;
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // adresy wykresów (dark theme)
-    const urls = {
-      ds: `https://dexscreener.com/bsc/${pair}?embed=1&theme=dark`,
-      // lekki widget DexTools (bez paneli)
-      dt: `https://www.dextools.io/widget-chart/en/bnb/${pair}?theme=dark&chartType=2&chartResolution=30&drawingToolbars=false`
-    };
+    // linki
+    document.getElementById('lpLink').href = LINKS.pairInfo;
+    document.getElementById('lnk-verify').href = LINKS.verify;
+    document.getElementById('lnk-twitter').href = LINKS.twitter;
+    document.getElementById('lnk-github').href = LINKS.github;
+    document.getElementById('lnk-swap').href = LINKS.swap;
+    document.getElementById('lnk-pair').href = LINKS.pairInfo;
+    document.getElementById('lnk-dexs').href = LINKS.dexscreener;
+    document.getElementById('lnk-dext').href = LINKS.dextools;
 
-    const box = document.getElementById('chartBox');
-    const loader = document.getElementById('chartLoader');
-    const ds = document.getElementById('frameDexS');
-    const dt = document.getElementById('frameDexT');
-    const bds = document.getElementById('btnDexS');
-    const bdt = document.getElementById('btnDexT');
-    let loaded = { ds: false, dt: false };
+    // hero buttons (Buy / BscScan / Copy)
+    const hero = document.getElementById('hero-buttons');
+    hero.innerHTML = `
+      <a href="${LINKS.swap}" target="_blank" rel="noopener"
+         class="inline-flex items-center px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-black font-bold">
+         Buy on PancakeSwap
+      </a>
+      <a href="${LINKS.bscscan}" target="_blank" rel="noopener"
+         class="inline-flex items-center px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold">
+         View on BscScan
+      </a>
+      <button id="copy-contract"
+         class="inline-flex items-center px-4 py-2 rounded-xl bg-slate-600 hover:bg-slate-500 text-white font-bold"
+         data-contract="${CONTRACT}">
+         Copy Contract
+      </button>
+      <span id="copy-status" class="ml-2 text-sm text-green-400"></span>
+    `;
 
-    function activate(btnOn, btnOff) {
-      btnOn.classList.add('bg-amber-400','text-slate-900');
-      btnOff.classList.remove('bg-amber-400','text-slate-900');
-    }
-
-    function show(which) {
-      if (which === 'ds') {
-        ds.hidden = false; dt.hidden = true;
-        activate(bds, bdt);
-        if (!loaded.ds) { ds.src = urls.ds; loaded.ds = true; if (loader) loader.remove(); }
-      } else {
-        ds.hidden = true; dt.hidden = false;
-        activate(bdt, bds);
-        if (!loaded.dt) { dt.src = urls.dt; loaded.dt = true; if (loader) loader.remove(); }
+    // kopiowanie
+    const btn = document.getElementById('copy-contract');
+    const status = document.getElementById('copy-status');
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.contract.trim());
+        status.textContent = 'Copied!';
+        setTimeout(() => status.textContent = '', 1500);
+      } catch {
+        status.textContent = 'Copy failed';
       }
-    }
-
-    function lazyInit() {
-      if (box.dataset.ready) return;
-      box.dataset.ready = '1';
-      // domyślnie DexScreener
-      show('ds');
-    }
-
-    // lazy-load przy przewinięciu do sekcji
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver(entries => {
-        if (entries.some(e => e.isIntersecting)) {
-          lazyInit(); io.disconnect();
-        }
-      }, { rootMargin: '200px' });
-      io.observe(box);
-    } else {
-      lazyInit();
-    }
-
-    bds.addEventListener('click', () => show('ds'));
-    bdt.addEventListener('click', () => show('dt'));
+    });
   })();
 </script>
+<!-- ============================================================================= -->
 
-  <!-- HOW TO BUY -->
-  <section class="max-w-6xl mx-auto px-4 py-10">
-    <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-      <h2 class="text-xl font-bold mb-4">How to buy</h2>
-      <ol class="list-decimal pl-6 space-y-2 text-slate-300">
-        <li>Install MetaMask and switch to <strong>BNB Smart Chain</strong>.</li>
-        <li>Fund your wallet with some <strong>BNB</strong> for gas.</li>
-        <li>Open PancakeSwap and import the LIVE contract address.</li>
-        <li>Swap BNB → LIVE. Start with a small amount first.</li>
-      </ol>
-    </div>
-  </section>
-
-  <footer class="max-w-6xl mx-auto px-4 py-10 text-sm text-slate-400">
-    <p><strong>Contact:</strong> <a href="mailto:contact@livetoken.io" class="hover:underline">contact@livetoken.io</a></p>
-    <p class="mt-2">No investment advice. No promises of profit. DYOR.</p>
-    <p class="mt-2">© <span id="y"></span> LIVE</p>
-  </footer>
-
-  <script>
-    // year in footer
-    const yEl = document.getElementById('y');
-    if (yEl) yEl.textContent = new Date().getFullYear();
-
-    // robust clipboard (works with/without navigator.clipboard)
-    document.getElementById('copy').onclick = async function(){
-      const text = document.getElementById('addr').textContent.trim();
-      try {
-        if (navigator.clipboard && window.isSecureContext) {
-          await navigator.clipboard.writeText(text);
-        } else {
-          const t=document.createElement('textarea');
-          t.value=text; document.body.appendChild(t); t.select();
-          document.execCommand('copy'); document.body.removeChild(t);
-        }
-        this.textContent='Copied';
-      } catch(e){
-        this.textContent='Copy failed';
-      } finally {
-        setTimeout(()=>this.textContent='Copy Contract',1500);
-      }
-    };
-  </script>
 </body>
 </html>
