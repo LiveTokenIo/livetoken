@@ -1,36 +1,67 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LIVE Token — Official One-Pager</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>LIVE Token — Official Landing</title>
 
-  <!-- SEO / Social -->
-  <meta name="description" content="LIVE Token on BNB Chain. Verified contract. Simple tokenomics. Join the 30-day growth journey.">
-  <meta property="og:title" content="LIVE Token — Official One-Pager">
-  <meta property="og:description" content="Verified contract on BNB Chain. Simple tokenomics. Join our 30-day growth journey.">
+  <!-- Meta / Social -->
+  <meta name="description" content="LIVE Token on BNB Chain. Verified contract. Join the 30-Day Growth Journey.">
+  <meta property="og:title" content="LIVE Token — Official Landing">
+  <meta property="og:description" content="Verified contract on BNB Chain. Simple tokenomics, transparent on-chain activity.">
   <meta property="og:image" content="/og-day1.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/logo_256.png">
+  <link rel="icon" href="/logo_256.png"/>
 
-  <!-- Tailwind (CDN) -->
+  <!-- Fonts: maszynowa (typewriter vibe) -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { mono: ['Space Mono','ui-monospace','SFMono-Regular','Menlo','monospace'] },
+          colors: {
+            live: {
+              bg: '#0c1420',      /* ciemny granat tła */
+              panel: '#0f1b2a',   /* panele glass */
+              teal: '#009c9f',    /* turkus (logo) */
+              orange: '#f7a33b'   /* pomarańcz (logo) */
+            }
+          },
+          boxShadow: {
+            glow: '0 0 0 2px rgba(0,156,159,.25), 0 0 30px rgba(0,156,159,.25)'
+          },
+          backdropBlur: { md: '8px' }
+        }
+      }
+    }
+  </script>
 
   <style>
-    .container-narrow{max-width:72rem;margin-left:auto;margin-right:auto}
+    html,body{height:100%}
+    .glass{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); backdrop-filter:blur(8px)}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1rem;border-radius:14px;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,#f7a33b,#ffcc66);color:#112;box-shadow:0 8px 24px rgba(247,163,59,.25)}
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-dark{background:#152133;color:#fff;border:1px solid #243246}
+    .btn-dark:hover{background:#1a2a42}
+    .chip{display:inline-flex;align-items:center;gap:.45rem;font-size:.78rem;padding:.25rem .6rem;border-radius:.6rem}
+    .chip-yellow{background:rgba(247,163,59,.15);color:#ffbd66;border:1px solid rgba(247,163,59,.35)}
+    .chip-teal{background:rgba(0,156,159,.15);color:#63d1d3;border:1px solid rgba(0,156,159,.35)}
   </style>
 </head>
-<body class="bg-slate-900 text-slate-100">
 
-<!-- ===================== CONFIG (JEDYNE MIEJSCE DO PODMIANY) ===================== -->
+<body class="bg-live-bg text-slate-100 font-mono selection:bg-live-teal/30">
+<!-- ========================= CONFIG (PODMIEŃ 1 LINIJKĘ) ========================= -->
 <script>
-  // ⬅️ WSTAW TU ADRES KONTRAKTU (checksummed) – JEDNA PODMIANA I KONIEC
+  // ⬇️ WSTAW SWÓJ CHECKSUMMED CONTRACT (DOKŁADNIE Z BSCSCAN)
   const CONTRACT = "0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf";
+  // (opcjonalnie) para LP (Pancake V2)
+  const PAIR = "0xCfe40593aBA61281C96b3e447E762e343f9b55F9";
 
-  // (opcjonalnie) adres pary LP – jeśli zmienisz parę, podmień tu
-  const PAIR = "0xCfe40593aBA61281C96b3e447E762e343f9b55F9"; // LIVE/WBNB (Pancake V2)
-
-  // Linki z kontraktu
   const LINKS = {
     swap: `https://pancakeswap.finance/swap?outputCurrency=${CONTRACT}`,
     bscscan: `https://bscscan.com/address/${CONTRACT}`,
@@ -39,164 +70,214 @@
     dextools: `https://www.dextools.io/app/en/bnb/pair-explorer/${PAIR}`,
     twitter: "https://x.com/Live__Token",
     github: "https://github.com/LiveTokenIo/livetoken",
+    telegram: "https://t.me/LiveTokenChatCo",
     verify: "/verify"
   };
 </script>
-<!-- ============================================================================= -->
+<!-- ============================================================================ -->
 
-<header class="container-narrow px-4 pt-10 pb-6">
-  <div class="max-w-2xl">
-    <img src="https://raw.githubusercontent.com/LiveTokenIo/livetoken/main/logo_live_final_orange_L.svg"
-         alt="LIVE logo" class="w-24 h-24 mb-6">
-    <h1 class="text-4xl font-extrabold tracking-tight">LIVE Token</h1>
-    <p class="text-slate-300 mt-2">Community token on <span class="font-semibold">BNB Smart Chain</span>.
-      Simple tokenomics, transparent on-chain activity and open development on GitHub.</p>
+<!-- BACKGROUND GRADIENT + GLOW -->
+<div class="absolute inset-0 -z-10">
+  <div class="absolute inset-0"
+       style="background: radial-gradient(1200px 600px at -10% -10%, rgba(0,156,159,.25), transparent 55%),
+                       radial-gradient(1100px 700px at 110% 10%, rgba(247,163,59,.25), transparent 55%),
+                       radial-gradient(900px 500px at 40% 120%, rgba(0,156,159,.18), transparent 55%);">
+  </div>
+</div>
 
-    <!-- HERO BUTTONS -->
-    <div id="hero-buttons" class="mt-6 flex flex-wrap gap-4"></div>
+<!-- NAV / LOGO -->
+<nav class="max-w-7xl mx-auto px-6 pt-6 pb-4 flex items-center justify-between">
+  <div class="flex items-center gap-3">
+    <img src="/logo_256.png" alt="LIVE" class="w-10 h-10 rounded-full shadow-glow"/>
+    <span class="uppercase tracking-widest text-sm text-live-teal/90">LIVE token</span>
+  </div>
+  <div class="hidden sm:flex items-center gap-3">
+    <a id="nav-twitter" class="btn btn-dark" target="_blank" rel="noopener">Twitter</a>
+    <a id="nav-telegram" class="btn btn-dark" target="_blank" rel="noopener">Telegram</a>
+    <a id="nav-github" class="btn btn-dark" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</nav>
 
-    <!-- Adres kontraktu -->
-    <div class="mt-4">
-      <div class="text-slate-400 text-sm">Contract (checksummed)</div>
-      <code id="addr" class="block mt-1 text-sm opacity-90"></code>
-      <p class="mt-3 text-sm"><a class="text-amber-300 hover:underline" href="/verify">Verify page</a></p>
+<!-- HERO -->
+<header class="max-w-7xl mx-auto px-6 py-10 lg:py-16 grid lg:grid-cols-2 gap-10 items-center">
+  <div>
+    <div class="chip chip-teal mb-4">Join the 30-Day Growth Journey 🚀</div>
+    <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+      LIVE Token<span class="text-live-teal">.</span>
+    </h1>
+    <p class="text-slate-300 mt-4 max-w-xl">
+      Community-first on <span class="font-bold">BNB Smart Chain</span>.  
+      Retro-cyberpunk vibe, transparent on-chain activity and open development.
+    </p>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a id="btn-swap" class="btn btn-primary">Buy on PancakeSwap</a>
+      <a id="btn-bsc" class="btn btn-dark">View on BscScan</a>
+      <button id="btn-copy" class="btn btn-dark">Copy Contract</button>
+      <span id="copy-status" class="text-live-orange/80 ml-2"></span>
+    </div>
+
+    <div class="mt-5 text-xs text-slate-400">
+      Contract (checksummed): <code id="addr" class="text-slate-300"></code>
+      <a id="lnk-verify" class="ml-3 underline decoration-dotted hover:text-live-orange" target="_blank" rel="noopener">Verify page</a>
+    </div>
+  </div>
+
+  <div class="glass rounded-2xl p-6 lg:p-8 border border-white/10">
+    <div class="text-xs uppercase tracking-widest text-slate-400">Contract quick facts</div>
+    <div class="mt-3 grid grid-cols-2 gap-4">
+      <div class="p-4 rounded-xl bg-live.panel">
+        <div class="text-slate-400 text-xs">Chain</div>
+        <div class="text-lg font-bold mt-1">BNB (BEP-20)</div>
+      </div>
+      <div class="p-4 rounded-xl bg-live.panel">
+        <div class="text-slate-400 text-xs">Decimals</div>
+        <div class="text-lg font-bold mt-1">18</div>
+      </div>
+      <div class="p-4 rounded-xl bg-live.panel col-span-2">
+        <div class="text-slate-400 text-xs">Verification</div>
+        <div class="text-lg font-bold mt-1">Verified on BscScan</div>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- CONTRACT + LINKS -->
-<section class="container-narrow px-4 py-6 grid md:grid-cols-2 gap-8">
-  <!-- Contract card -->
-  <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-    <h2 class="text-xl font-bold mb-3">Contract</h2>
-    <ul class="space-y-2 text-slate-300">
-      <li><span class="font-semibold">Checksum:</span> <span id="checksum" class="font-mono"></span></li>
-      <li><span class="font-semibold">Chain:</span> BNB Smart Chain (BEP-20)</li>
-      <li><span class="font-semibold">Decimals:</span> 18</li>
-      <li><span class="font-semibold">Verification:</span> Verified on BscScan</li>
-    </ul>
+<!-- TOKENOMICS -->
+<section class="max-w-7xl mx-auto px-6 py-8 grid md:grid-cols-4 gap-4">
+  <div class="glass rounded-2xl p-5 border border-white/10">
+    <div class="text-slate-400 text-xs">Owner (development)</div>
+    <div class="text-2xl font-bold mt-1">2%</div>
   </div>
-
-  <!-- Links card -->
-  <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-    <h2 class="text-xl font-bold mb-3">Links</h2>
-    <ul class="space-y-2">
-      <li><a class="text-amber-300 hover:underline" id="lnk-verify" target="_blank" rel="noopener">Verify</a></li>
-      <li><a class="text-amber-300 hover:underline" id="lnk-twitter" target="_blank" rel="noopener">X (Twitter)</a></li>
-      <li><a class="text-amber-300 hover:underline" id="lnk-github" target="_blank" rel="noopener">GitHub</a></li>
-      <li><a class="text-amber-300 hover:underline" id="lnk-swap" target="_blank" rel="noopener">Buy on PancakeSwap</a></li>
-      <li><a class="text-amber-300 hover:underline" id="lnk-pair" target="_blank" rel="noopener">LIVE/WBNB pair (Pancake V2)</a></li>
-      <li><a class="text-amber-300 hover:underline" id="lnk-dexs" target="_blank" rel="noopener">Dexscreener (pair)</a></li>
-      <li><a class="text-amber-300 hover:underline" id="lnk-dext" target="_blank" rel="noopener">Dextools (pair)</a></li>
-    </ul>
+  <div class="glass rounded-2xl p-5 border border-white/10">
+    <div class="text-slate-400 text-xs">Marketing & Community</div>
+    <div class="text-2xl font-bold mt-1">2%</div>
+  </div>
+  <div class="glass rounded-2xl p-5 border border-white/10">
+    <div class="text-slate-400 text-xs">Burn</div>
+    <div class="text-2xl font-bold mt-1">1%</div>
+  </div>
+  <div class="glass rounded-2xl p-5 border border-white/10">
+    <div class="text-slate-400 text-xs">Circulating Supply</div>
+    <div class="text-2xl font-bold mt-1">95%</div>
   </div>
 </section>
 
-<!-- TOKENOMICS / LP -->
-<section class="container-narrow px-4 pb-6 grid md:grid-cols-2 gap-8">
-  <!-- Tokenomics -->
-  <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-    <div class="text-slate-400 text-sm">Tokenomics</div>
-    <ul class="list-disc ml-6 mt-2">
-      <li>2% Owner (development)</li>
-      <li>2% Marketing &amp; Community</li>
-      <li>1% Burn</li>
-      <li>95% Circulating Supply</li>
-    </ul>
+<!-- LIQUIDITY -->
+<section class="max-w-7xl mx-auto px-6 py-8 grid lg:grid-cols-2 gap-6">
+  <div class="glass rounded-2xl p-6 border border-white/10">
+    <div class="text-slate-400 text-xs uppercase tracking-widest">LP / Liquidity</div>
+    <div class="mt-2">
+      <span class="chip chip-yellow">planned (lock in progress)</span>
+    </div>
+
+    <div class="mt-4">
+      <div class="text-xs text-slate-400">Allocation</div>
+      <div class="w-full h-2 bg-slate-800 rounded-full mt-2 overflow-hidden">
+        <div class="h-full bg-gradient-to-r from-live-teal to-live-orange" style="width:63.56%"></div>
+      </div>
+      <div class="text-xs text-slate-400 mt-2">63.56% of supply in pools</div>
+    </div>
+
+    <div class="mt-4 text-sm">
+      <a id="lnk-pair" class="underline decoration-dotted text-live-orange hover:text-amber-300" target="_blank" rel="noopener">
+        LIVE/WBNB pair (Pancake V2)
+      </a>
+      <div class="text-xs text-slate-400 mt-1">Current LP value (est.): ~$777.08 <em>(source: Mudra)</em></div>
+    </div>
   </div>
 
-  <!-- LP / Liquidity -->
-  <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-    <div class="text-slate-400 text-sm">LP / Liquidity</div>
-    <div class="text-2xl font-bold flex items-center gap-2 mt-1">
-      <span id="lpStatus"
-            class="inline-flex items-center rounded-md px-2 py-0.5 text-sm bg-yellow-500/20 text-yellow-400">
-        planned (lock in progress)
-      </span>
-    </div>
-    <div class="mt-2 text-sm">
-      <a id="lpLink" class="text-amber-300 hover:underline" target="_blank" rel="noopener">LIVE/WBNB pair (Pancake V2)</a>
-      <span class="text-slate-400 text-xs block mt-1">
-        Liquidity Pool Token Allocation: <strong>63.56%</strong> of supply in pools
-      </span>
-      <span class="text-slate-400 text-xs block">
-        Current LP Value (est.): <strong>~$777.08</strong> <em>(source: Mudra)</em>
-      </span>
+  <div class="glass rounded-2xl p-6 border border-white/10">
+    <div class="text-slate-400 text-xs uppercase tracking-widest">Quick Links</div>
+    <div class="mt-3 grid sm:grid-cols-2 gap-3">
+      <a id="lnk-swap" class="btn btn-primary justify-center">Buy on PancakeSwap</a>
+      <a id="lnk-bsc" class="btn btn-dark justify-center">View on BscScan</a>
+      <a id="lnk-dexs" class="btn btn-dark justify-center">Dexscreener (pair)</a>
+      <a id="lnk-dext" class="btn btn-dark justify-center">Dextools (pair)</a>
+      <a id="lnk-twitter" class="btn btn-dark justify-center">Twitter</a>
+      <a id="lnk-github" class="btn btn-dark justify-center">GitHub</a>
     </div>
   </div>
 </section>
 
 <!-- ROADMAP -->
-<section class="container-narrow px-4 pb-12">
-  <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-6">
-    <h2 class="text-xl font-bold mb-3">Roadmap</h2>
-    <ul class="list-disc ml-6 mt-2">
-      <li>Phase 1 — Launch &amp; Community</li>
-      <li>Phase 2 — Listings (DEX + CMC/CG) &amp; Marketing Push</li>
-      <li>Phase 3 — Partnerships &amp; Ecosystem Growth</li>
-      <li>Phase 4 — Utilities &amp; Expansion</li>
-    </ul>
+<section class="max-w-7xl mx-auto px-6 py-12">
+  <div class="glass rounded-2xl p-6 border border-white/10">
+    <div class="text-slate-400 text-xs uppercase tracking-widest mb-3">Roadmap</div>
+    <ol class="relative border-l border-slate-700/70 pl-6 space-y-6">
+      <li>
+        <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-live-teal shadow-glow"></span>
+        <h3 class="font-bold">Phase 1 — Launch & Community</h3>
+        <p class="text-sm text-slate-400 mt-1">Launch, verified contract, socials, daily updates.</p>
+      </li>
+      <li>
+        <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-live-orange shadow-glow"></span>
+        <h3 class="font-bold">Phase 2 — Listings (DEX + CMC/CG) & Marketing Push</h3>
+        <p class="text-sm text-slate-400 mt-1">Listings, memes, collabs, first analytics.</p>
+      </li>
+      <li>
+        <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-live-teal shadow-glow"></span>
+        <h3 class="font-bold">Phase 3 — Partnerships & Ecosystem Growth</h3>
+        <p class="text-sm text-slate-400 mt-1">Alliances, utilities in progress, community events.</p>
+      </li>
+      <li>
+        <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-live-orange shadow-glow"></span>
+        <h3 class="font-bold">Phase 4 — Utilities & Expansion</h3>
+        <p class="text-sm text-slate-400 mt-1">Utility roll-out, scaling, more listings.</p>
+      </li>
+    </ol>
   </div>
 </section>
 
-<footer class="border-t border-slate-800 py-6 text-center text-slate-400 text-sm">
-  <div class="container-narrow px-4">
-    © <span id="year"></span> LIVE Token — GM 🌞 WAGMI 🚀
+<!-- FOOTER -->
+<footer class="border-t border-slate-800/60">
+  <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-400 text-sm">
+    <div>© <span id="year"></span> LIVE Token — GM 🌞 WAGMI 🚀</div>
+    <div class="flex items-center gap-3">
+      <a id="ft-twitter" class="underline decoration-dotted hover:text-live-orange" target="_blank" rel="noopener">Twitter</a>
+      <a id="ft-telegram" class="underline decoration-dotted hover:text-live-orange" target="_blank" rel="noopener">Telegram</a>
+      <a id="ft-github" class="underline decoration-dotted hover:text-live-orange" target="_blank" rel="noopener">GitHub</a>
+    </div>
   </div>
 </footer>
 
-<!-- ===================== BOOTSTRAP JS (wstrzykuje linki i przyciski) ===================== -->
+<!-- BOOTSTRAP JS -->
 <script>
-  (function () {
-    // wypełnij widoczne pola
+  (function(){
+    // Adres i rok
     document.getElementById('addr').textContent = CONTRACT;
-    document.getElementById('checksum').textContent = CONTRACT;
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // linki
-    document.getElementById('lpLink').href = LINKS.pairInfo;
-    document.getElementById('lnk-verify').href = LINKS.verify;
-    document.getElementById('lnk-twitter').href = LINKS.twitter;
-    document.getElementById('lnk-github').href = LINKS.github;
-    document.getElementById('lnk-swap').href = LINKS.swap;
-    document.getElementById('lnk-pair').href = LINKS.pairInfo;
-    document.getElementById('lnk-dexs').href = LINKS.dexscreener;
-    document.getElementById('lnk-dext').href = LINKS.dextools;
+    // Linki
+    const set = (id, href)=>{ const a=document.getElementById(id); if(a) a.href=href; };
+    set('btn-swap', LINKS.swap);
+    set('btn-bsc', LINKS.bscscan);
+    set('lnk-verify', LINKS.verify);
+    set('lnk-pair', LINKS.pairInfo);
+    set('lnk-swap', LINKS.swap);
+    set('lnk-bsc', LINKS.bscscan);
+    set('lnk-dexs', LINKS.dexscreener);
+    set('lnk-dext', LINKS.dextools);
+    set('lnk-twitter', LINKS.twitter);
+    set('lnk-github', LINKS.github);
+    set('nav-twitter', LINKS.twitter);
+    set('nav-telegram', LINKS.telegram);
+    set('nav-github', LINKS.github);
+    set('ft-twitter', LINKS.twitter);
+    set('ft-telegram', LINKS.telegram);
+    set('ft-github', LINKS.github);
 
-    // hero buttons (Buy / BscScan / Copy)
-    const hero = document.getElementById('hero-buttons');
-    hero.innerHTML = `
-      <a href="${LINKS.swap}" target="_blank" rel="noopener"
-         class="inline-flex items-center px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-black font-bold">
-         Buy on PancakeSwap
-      </a>
-      <a href="${LINKS.bscscan}" target="_blank" rel="noopener"
-         class="inline-flex items-center px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold">
-         View on BscScan
-      </a>
-      <button id="copy-contract"
-         class="inline-flex items-center px-4 py-2 rounded-xl bg-slate-600 hover:bg-slate-500 text-white font-bold"
-         data-contract="${CONTRACT}">
-         Copy Contract
-      </button>
-      <span id="copy-status" class="ml-2 text-sm text-green-400"></span>
-    `;
-
-    // kopiowanie
-    const btn = document.getElementById('copy-contract');
+    // Copy
+    const btn = document.getElementById('btn-copy');
     const status = document.getElementById('copy-status');
     btn.addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText(btn.dataset.contract.trim());
+        await navigator.clipboard.writeText(CONTRACT);
         status.textContent = 'Copied!';
-        setTimeout(() => status.textContent = '', 1500);
-      } catch {
-        status.textContent = 'Copy failed';
-      }
+        setTimeout(()=> status.textContent = '', 1400);
+      } catch { status.textContent = 'Copy failed'; }
     });
   })();
 </script>
-<!-- ============================================================================= -->
-
 </body>
 </html>
+ 
