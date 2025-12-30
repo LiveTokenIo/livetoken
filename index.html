@@ -9,12 +9,12 @@
   <meta name="description" content="LIVE Token on BNB Chain. Verified contract. Join the 30-Day Growth Journey.">
   <meta property="og:title" content="LIVE Token — Official Landing">
   <meta property="og:description" content="Verified contract on BNB Chain. Simple tokenomics, transparent on-chain activity.">
-  <meta property="og:image" content="/og-day1.png">
+  <meta property="og:image" content="/logo_og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/logo_256.png"/>
 
-  <!-- Fonts: maszynowa (typewriter vibe) -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Fonts: Modern minimalist -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -22,44 +22,181 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { mono: ['Space Mono','ui-monospace','SFMono-Regular','Menlo','monospace'] },
+          fontFamily: { 
+            sans: ['Inter','system-ui','sans-serif'],
+            mono: ['Space Mono','ui-monospace','SFMono-Regular','Menlo','monospace'] 
+          },
           colors: {
             live: {
-              bg: '#0c1420',      /* ciemny granat tła */
-              panel: '#0f1b2a',   /* panele glass */
+              bg: '#0a1628',      /* ciemny granat tła */
+              panel: '#0f1e33',   /* panele glass */
               teal: '#009c9f',    /* turkus (logo) */
-              orange: '#f7a33b'   /* pomarańcz (logo) */
+              orange: '#ff8c42',  /* pomarańcz (logo) */
+              darkblue: '#1a2942' /* ciemnoniebieski */
             }
           },
           boxShadow: {
-            glow: '0 0 0 2px rgba(0,156,159,.25), 0 0 30px rgba(0,156,159,.25)'
+            glow: '0 0 40px rgba(255,140,66,.3)',
+            'glow-teal': '0 0 40px rgba(0,156,159,.3)',
+            'card': '0 8px 32px rgba(0,0,0,.3)'
           },
-          backdropBlur: { md: '8px' }
+          backdropBlur: { md: '12px' },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
         }
       }
     }
   </script>
 
   <style>
-    html,body{height:100%}
-    .glass{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); backdrop-filter:blur(8px)}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1rem;border-radius:14px;font-weight:700}
-    .btn-primary{background:linear-gradient(90deg,#f7a33b,#ffcc66);color:#112;box-shadow:0 8px 24px rgba(247,163,59,.25)}
-    .btn-primary:hover{transform:translateY(-1px)}
-    .btn-dark{background:#152133;color:#fff;border:1px solid #243246}
-    .btn-dark:hover{background:#1a2a42}
-    .chip{display:inline-flex;align-items:center;gap:.45rem;font-size:.78rem;padding:.25rem .6rem;border-radius:.6rem}
-    .chip-yellow{background:rgba(247,163,59,.15);color:#ffbd66;border:1px solid rgba(247,163,59,.35)}
-    .chip-teal{background:rgba(0,156,159,.15);color:#63d1d3;border:1px solid rgba(0,156,159,.35)}
+    html,body{height:100%; scroll-behavior: smooth;}
+    
+    .glass{
+      background:rgba(15,30,51,.6); 
+      border:1px solid rgba(255,255,255,.08); 
+      backdrop-filter:blur(12px);
+      transition: all 0.3s ease;
+    }
+    
+    .glass:hover{
+      background:rgba(15,30,51,.75); 
+      border:1px solid rgba(255,140,66,.3);
+      transform: translateY(-2px);
+    }
+    
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.85rem 1.5rem;
+      border-radius:12px;
+      font-weight:600;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+    
+    .btn-primary{
+      background:linear-gradient(135deg,#ff8c42,#ffb366);
+      color:#0a1628;
+      box-shadow:0 8px 24px rgba(255,140,66,.35);
+      border: 2px solid transparent;
+    }
+    
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 32px rgba(255,140,66,.5);
+    }
+    
+    .btn-secondary{
+      background:rgba(0,156,159,.15);
+      color:#63d1d3;
+      border:2px solid rgba(0,156,159,.4);
+    }
+    
+    .btn-secondary:hover{
+      background:rgba(0,156,159,.25);
+      border-color:rgba(0,156,159,.6);
+      transform:translateY(-2px);
+    }
+    
+    .btn-dark{
+      background:rgba(26,41,66,.8);
+      color:#fff;
+      border:2px solid rgba(255,255,255,.1);
+    }
+    
+    .btn-dark:hover{
+      background:rgba(26,41,66,1);
+      border-color:rgba(255,140,66,.4);
+      transform:translateY(-2px);
+    }
+    
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      font-size:.8rem;
+      padding:.4rem .85rem;
+      border-radius:.7rem;
+      font-weight:600;
+    }
+    
+    .chip-yellow{
+      background:rgba(255,140,66,.15);
+      color:#ffb366;
+      border:1px solid rgba(255,140,66,.35);
+    }
+    
+    .chip-teal{
+      background:rgba(0,156,159,.15);
+      color:#63d1d3;
+      border:1px solid rgba(0,156,159,.35);
+    }
+    
+    .gradient-text{
+      background: linear-gradient(135deg, #ff8c42, #009c9f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .section-title{
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    
+    @media (max-width: 768px) {
+      .section-title{
+        font-size: 2rem;
+      }
+    }
+    
+    .card-stat{
+      background: rgba(15,30,51,.6);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .card-stat:hover{
+      border-color: rgba(255,140,66,.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.3);
+    }
+    
+    /* Smooth scroll */
+    html {
+      scroll-padding-top: 80px;
+    }
+    
+    /* Logo animation */
+    .logo-glow {
+      filter: drop-shadow(0 0 20px rgba(255,140,66,.5));
+      transition: all 0.3s ease;
+    }
+    
+    .logo-glow:hover {
+      filter: drop-shadow(0 0 30px rgba(255,140,66,.8));
+      transform: scale(1.05);
+    }
   </style>
 </head>
 
-<body class="bg-live-bg text-slate-100 font-mono selection:bg-live-teal/30">
-<!-- ========================= CONFIG (PODMIEŃ 1 LINIJKĘ) ========================= -->
+<body class="bg-live-bg text-slate-100 font-sans selection:bg-live-orange/30">
+<!-- ========================= CONFIG ========================= -->
 <script>
-  // ⬇️ WSTAW SWÓJ CHECKSUMMED CONTRACT (DOKŁADNIE Z BSCSCAN)
   const CONTRACT = "0xd1119110bbC86EbC0479A2B45F1796Ff9f416cBf";
-  // (opcjonalnie) para LP (Pancake V2)
   const PAIR = "0xCfe40593aBA61281C96b3e447E762e343f9b55F9";
 
   const LINKS = {
@@ -71,187 +208,485 @@
     twitter: "https://x.com/Live__Token",
     github: "https://github.com/LiveTokenIo/livetoken",
     telegram: "https://t.me/LiveTokenChatCo",
-    verify: "/verify"
+    verify: "/verify.html"
   };
 </script>
-<!-- ============================================================================ -->
+<!-- ========================================================= -->
 
-<!-- BACKGROUND GRADIENT + GLOW -->
-<div class="absolute inset-0 -z-10">
+<!-- BACKGROUND GRADIENT + ANIMATED GLOW -->
+<div class="fixed inset-0 -z-10 overflow-hidden">
   <div class="absolute inset-0"
-       style="background: radial-gradient(1200px 600px at -10% -10%, rgba(0,156,159,.25), transparent 55%),
-                       radial-gradient(1100px 700px at 110% 10%, rgba(247,163,59,.25), transparent 55%),
-                       radial-gradient(900px 500px at 40% 120%, rgba(0,156,159,.18), transparent 55%);">
+       style="background: radial-gradient(1400px 700px at 50% -20%, rgba(255,140,66,.15), transparent 60%),
+                       radial-gradient(1200px 800px at -10% 50%, rgba(0,156,159,.12), transparent 60%),
+                       radial-gradient(1000px 600px at 110% 80%, rgba(255,140,66,.1), transparent 60%);">
   </div>
+  <!-- Animated orbs -->
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-live-orange/10 rounded-full blur-3xl animate-pulse-slow"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-live-teal/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
 </div>
 
 <!-- NAV / LOGO -->
-<nav class="max-w-7xl mx-auto px-6 pt-6 pb-4 flex items-center justify-between">
-  <div class="flex items-center gap-3">
-    <img src="/logo_256.png" alt="LIVE" class="w-10 h-10 rounded-full shadow-glow"/>
-    <span class="uppercase tracking-widest text-sm text-live-teal/90">LIVE token</span>
+<nav class="sticky top-0 z-50 backdrop-blur-md bg-live-bg/80 border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <img src="/logo_new.png" alt="LIVE" class="w-12 h-12 rounded-full logo-glow"/>
+      <div>
+        <span class="font-bold text-xl tracking-tight">LIVE <span class="gradient-text">Token</span></span>
+        <div class="text-xs text-slate-400 font-mono">BNB Smart Chain</div>
+      </div>
+    </div>
+    <div class="hidden md:flex items-center gap-3">
+      <a id="nav-twitter" class="btn btn-dark text-sm" target="_blank" rel="noopener">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Twitter
+      </a>
+      <a id="nav-telegram" class="btn btn-dark text-sm" target="_blank" rel="noopener">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/></svg>
+        Telegram
+      </a>
+      <a id="nav-github" class="btn btn-dark text-sm" target="_blank" rel="noopener">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+    <!-- Mobile menu button -->
+    <button id="mobile-menu-btn" class="md:hidden btn btn-dark p-2">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
   </div>
-  <div class="hidden sm:flex items-center gap-3">
-    <a id="nav-twitter" class="btn btn-dark" target="_blank" rel="noopener">Twitter</a>
-    <a id="nav-telegram" class="btn btn-dark" target="_blank" rel="noopener">Telegram</a>
-    <a id="nav-github" class="btn btn-dark" target="_blank" rel="noopener">GitHub</a>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-live-bg/95 backdrop-blur-md">
+    <div class="px-6 py-4 flex flex-col gap-3">
+      <a id="mobile-twitter" class="btn btn-dark justify-center" target="_blank" rel="noopener">Twitter</a>
+      <a id="mobile-telegram" class="btn btn-dark justify-center" target="_blank" rel="noopener">Telegram</a>
+      <a id="mobile-github" class="btn btn-dark justify-center" target="_blank" rel="noopener">GitHub</a>
+    </div>
   </div>
 </nav>
 
-<!-- HERO -->
-<header class="max-w-7xl mx-auto px-6 py-10 lg:py-16 grid lg:grid-cols-2 gap-10 items-center">
-  <div>
-    <div class="chip chip-teal mb-4">Join the 30-Day Growth Journey 🚀</div>
-    <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
-      LIVE Token<span class="text-live-teal">.</span>
-    </h1>
-    <p class="text-slate-300 mt-4 max-w-xl">
-      Community-first on <span class="font-bold">BNB Smart Chain</span>.  
-      Retro-cyberpunk vibe, transparent on-chain activity and open development.
-    </p>
+<!-- HERO SECTION -->
+<header class="max-w-7xl mx-auto px-6 py-16 lg:py-24">
+  <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <!-- Left: Content -->
+    <div class="space-y-6">
+      <div class="chip chip-teal animate-pulse">
+        🚀 Join the 30-Day Growth Journey
+      </div>
+      
+      <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight">
+        Welcome to<br/>
+        <span class="gradient-text">LIVE Token</span>
+      </h1>
+      
+      <p class="text-lg lg:text-xl text-slate-300 leading-relaxed max-w-xl">
+        A community-first cryptocurrency on <span class="font-semibold text-white">BNB Smart Chain</span>. 
+        Experience transparent on-chain activity, open development, and a vibrant retro-cyberpunk community.
+      </p>
 
-    <div class="mt-6 flex flex-wrap gap-3">
-      <a id="btn-swap" class="btn btn-primary">Buy on PancakeSwap</a>
-      <a id="btn-bsc" class="btn btn-dark">View on BscScan</a>
-      <button id="btn-copy" class="btn btn-dark">Copy Contract</button>
-      <span id="copy-status" class="text-live-orange/80 ml-2"></span>
+      <div class="flex flex-wrap gap-4 pt-4">
+        <a id="btn-swap" class="btn btn-primary text-lg">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+          </svg>
+          Buy on PancakeSwap
+        </a>
+        <a id="btn-bsc" class="btn btn-secondary">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          View on BscScan
+        </a>
+      </div>
+
+      <!-- Contract Address -->
+      <div class="glass p-4 rounded-xl inline-block">
+        <div class="text-xs text-slate-400 mb-2 font-semibold uppercase tracking-wide">Contract Address</div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <code id="addr" class="text-sm font-mono text-slate-200"></code>
+          <button id="btn-copy" class="btn btn-dark py-2 px-3 text-xs">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+            </svg>
+            Copy
+          </button>
+          <span id="copy-status" class="text-live-orange text-sm font-semibold"></span>
+        </div>
+        <a id="lnk-verify" class="text-xs text-slate-400 hover:text-live-orange underline decoration-dotted mt-2 inline-block" target="_blank" rel="noopener">
+          → Verify contract authenticity
+        </a>
+      </div>
     </div>
 
-    <div class="mt-5 text-xs text-slate-400">
-      Contract (checksummed): <code id="addr" class="text-slate-300"></code>
-      <a id="lnk-verify" class="ml-3 underline decoration-dotted hover:text-live-orange" target="_blank" rel="noopener">Verify page</a>
-    </div>
-  </div>
-
-  <div class="glass rounded-2xl p-6 lg:p-8 border border-white/10">
-    <div class="text-xs uppercase tracking-widest text-slate-400">Contract quick facts</div>
-    <div class="mt-3 grid grid-cols-2 gap-4">
-      <div class="p-4 rounded-xl bg-live.panel">
-        <div class="text-slate-400 text-xs">Chain</div>
-        <div class="text-lg font-bold mt-1">BNB (BEP-20)</div>
+    <!-- Right: Quick Facts Card -->
+    <div class="glass rounded-3xl p-8 shadow-card">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-3 h-3 rounded-full bg-live-orange animate-pulse"></div>
+        <h3 class="text-sm uppercase tracking-widest text-slate-400 font-bold">Contract Quick Facts</h3>
       </div>
-      <div class="p-4 rounded-xl bg-live.panel">
-        <div class="text-slate-400 text-xs">Decimals</div>
-        <div class="text-lg font-bold mt-1">18</div>
-      </div>
-      <div class="p-4 rounded-xl bg-live.panel col-span-2">
-        <div class="text-slate-400 text-xs">Verification</div>
-        <div class="text-lg font-bold mt-1">Verified on BscScan</div>
+      
+      <div class="grid grid-cols-2 gap-4">
+        <div class="card-stat">
+          <div class="text-slate-400 text-xs font-semibold mb-2">Blockchain</div>
+          <div class="text-2xl font-bold">BNB Chain</div>
+          <div class="text-xs text-slate-500 mt-1">BEP-20</div>
+        </div>
+        
+        <div class="card-stat">
+          <div class="text-slate-400 text-xs font-semibold mb-2">Decimals</div>
+          <div class="text-2xl font-bold">18</div>
+          <div class="text-xs text-slate-500 mt-1">Standard</div>
+        </div>
+        
+        <div class="card-stat col-span-2">
+          <div class="text-slate-400 text-xs font-semibold mb-2">Verification Status</div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-lg font-bold text-green-400">Verified on BscScan</span>
+          </div>
+        </div>
+        
+        <div class="card-stat col-span-2">
+          <div class="text-slate-400 text-xs font-semibold mb-2">Security</div>
+          <div class="text-sm text-slate-300">Transparent, auditable smart contract</div>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- TOKENOMICS -->
-<section class="max-w-7xl mx-auto px-6 py-8 grid md:grid-cols-4 gap-4">
-  <div class="glass rounded-2xl p-5 border border-white/10">
-    <div class="text-slate-400 text-xs">Owner (development)</div>
-    <div class="text-2xl font-bold mt-1">2%</div>
+<!-- TOKENOMICS SECTION -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="tokenomics">
+  <div class="text-center mb-12">
+    <h2 class="section-title gradient-text">Tokenomics</h2>
+    <p class="text-slate-400 text-lg">Simple, transparent, and community-focused distribution</p>
   </div>
-  <div class="glass rounded-2xl p-5 border border-white/10">
-    <div class="text-slate-400 text-xs">Marketing & Community</div>
-    <div class="text-2xl font-bold mt-1">2%</div>
-  </div>
-  <div class="glass rounded-2xl p-5 border border-white/10">
-    <div class="text-slate-400 text-xs">Burn</div>
-    <div class="text-2xl font-bold mt-1">1%</div>
-  </div>
-  <div class="glass rounded-2xl p-5 border border-white/10">
-    <div class="text-slate-400 text-xs">Circulating Supply</div>
-    <div class="text-2xl font-bold mt-1">95%</div>
+  
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="glass rounded-2xl p-6 text-center hover:shadow-glow">
+      <div class="text-5xl font-extrabold gradient-text mb-3">2%</div>
+      <div class="text-slate-300 font-semibold mb-2">Development</div>
+      <div class="text-sm text-slate-400">Owner allocation for ongoing development</div>
+    </div>
+    
+    <div class="glass rounded-2xl p-6 text-center hover:shadow-glow">
+      <div class="text-5xl font-extrabold gradient-text mb-3">2%</div>
+      <div class="text-slate-300 font-semibold mb-2">Marketing</div>
+      <div class="text-sm text-slate-400">Community growth and partnerships</div>
+    </div>
+    
+    <div class="glass rounded-2xl p-6 text-center hover:shadow-glow">
+      <div class="text-5xl font-extrabold gradient-text mb-3">1%</div>
+      <div class="text-slate-300 font-semibold mb-2">Burn</div>
+      <div class="text-sm text-slate-400">Deflationary mechanism</div>
+    </div>
+    
+    <div class="glass rounded-2xl p-6 text-center hover:shadow-glow">
+      <div class="text-5xl font-extrabold gradient-text mb-3">95%</div>
+      <div class="text-slate-300 font-semibold mb-2">Circulating</div>
+      <div class="text-sm text-slate-400">Available for community</div>
+    </div>
   </div>
 </section>
 
-<!-- LIQUIDITY -->
-<section class="max-w-7xl mx-auto px-6 py-8 grid lg:grid-cols-2 gap-6">
-  <div class="glass rounded-2xl p-6 border border-white/10">
-    <div class="text-slate-400 text-xs uppercase tracking-widest">LP / Liquidity</div>
-    <div class="mt-2">
-      <span class="chip chip-yellow">planned (lock in progress)</span>
-    </div>
-
-    <div class="mt-4">
-      <div class="text-xs text-slate-400">Allocation</div>
-      <div class="w-full h-2 bg-slate-800 rounded-full mt-2 overflow-hidden">
-        <div class="h-full bg-gradient-to-r from-live-teal to-live-orange" style="width:63.56%"></div>
+<!-- LIQUIDITY & TRADING SECTION -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="trading">
+  <div class="grid lg:grid-cols-2 gap-8">
+    <!-- Liquidity Info -->
+    <div class="glass rounded-3xl p-8 shadow-card">
+      <div class="flex items-center gap-3 mb-6">
+        <svg class="w-6 h-6 text-live-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+        <h3 class="text-xl font-bold">Liquidity Pool</h3>
       </div>
-      <div class="text-xs text-slate-400 mt-2">63.56% of supply in pools</div>
+      
+      <div class="space-y-4">
+        <div class="chip chip-yellow">
+          🔒 Lock in progress
+        </div>
+        
+        <div>
+          <div class="text-sm text-slate-400 mb-3 font-semibold">Pool Allocation</div>
+          <div class="w-full h-3 bg-slate-800/50 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-live-teal to-live-orange shadow-glow" style="width:63.56%"></div>
+          </div>
+          <div class="text-sm text-slate-300 mt-2 font-semibold">63.56% of supply in liquidity pools</div>
+        </div>
+        
+        <div class="pt-4 border-t border-white/10">
+          <a id="lnk-pair" class="text-live-orange hover:text-amber-300 font-semibold flex items-center gap-2" target="_blank" rel="noopener">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+            LIVE/WBNB Pair (PancakeSwap V2)
+          </a>
+          <div class="text-sm text-slate-400 mt-2">
+            Estimated LP Value: <span class="text-slate-200 font-semibold">~$777.08</span>
+            <span class="text-xs ml-2">(via Mudra)</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="mt-4 text-sm">
-      <a id="lnk-pair" class="underline decoration-dotted text-live-orange hover:text-amber-300" target="_blank" rel="noopener">
-        LIVE/WBNB pair (Pancake V2)
-      </a>
-      <div class="text-xs text-slate-400 mt-1">Current LP value (est.): ~$777.08 <em>(source: Mudra)</em></div>
-    </div>
-  </div>
-
-  <div class="glass rounded-2xl p-6 border border-white/10">
-    <div class="text-slate-400 text-xs uppercase tracking-widest">Quick Links</div>
-    <div class="mt-3 grid sm:grid-cols-2 gap-3">
-      <a id="lnk-swap" class="btn btn-primary justify-center">Buy on PancakeSwap</a>
-      <a id="lnk-bsc" class="btn btn-dark justify-center">View on BscScan</a>
-      <a id="lnk-dexs" class="btn btn-dark justify-center">Dexscreener (pair)</a>
-      <a id="lnk-dext" class="btn btn-dark justify-center">Dextools (pair)</a>
-      <a id="lnk-twitter" class="btn btn-dark justify-center">Twitter</a>
-      <a id="lnk-github" class="btn btn-dark justify-center">GitHub</a>
+    <!-- Quick Trading Links -->
+    <div class="glass rounded-3xl p-8 shadow-card">
+      <div class="flex items-center gap-3 mb-6">
+        <svg class="w-6 h-6 text-live-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+        </svg>
+        <h3 class="text-xl font-bold">Trade & Track</h3>
+      </div>
+      
+      <div class="grid gap-3">
+        <a id="lnk-swap" class="btn btn-primary justify-center text-base">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+          </svg>
+          Buy on PancakeSwap
+        </a>
+        
+        <a id="lnk-bsc" class="btn btn-dark justify-center">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0L1.608 6v12L12 24l10.392-6V6L12 0zm0 2.5l8.392 4.85v9.3L12 21.5l-8.392-4.85v-9.3L12 2.5z"/>
+          </svg>
+          BscScan Explorer
+        </a>
+        
+        <div class="grid grid-cols-2 gap-3">
+          <a id="lnk-dexs" class="btn btn-dark justify-center text-sm">
+            📊 DexScreener
+          </a>
+          <a id="lnk-dext" class="btn btn-dark justify-center text-sm">
+            🔧 DexTools
+          </a>
+        </div>
+        
+        <div class="pt-4 border-t border-white/10">
+          <div class="text-xs text-slate-400 mb-3 font-semibold uppercase tracking-wide">Community</div>
+          <div class="grid grid-cols-2 gap-3">
+            <a id="lnk-twitter" class="btn btn-dark justify-center text-sm">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              Twitter
+            </a>
+            <a id="lnk-github" class="btn btn-dark justify-center text-sm">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ROADMAP -->
-<section class="max-w-7xl mx-auto px-6 py-12">
-  <div class="glass rounded-2xl p-6 border border-white/10">
-    <div class="text-slate-400 text-xs uppercase tracking-widest mb-3">Roadmap</div>
-    <ol class="relative border-l border-slate-700/70 pl-6 space-y-6">
-      <li>
-        <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-live-teal shadow-glow"></span>
-        <h3 class="font-bold">Phase 1 — Launch & Community</h3>
-        <p class="text-sm text-slate-400 mt-1">Launch, verified contract, socials, daily updates.</p>
-      </li>
-      <li>
-        <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-live-orange shadow-glow"></span>
-        <h3 class="font-bold">Phase 2 — Listings (DEX + CMC/CG) & Marketing Push</h3>
-        <p class="text-sm text-slate-400 mt-1">Listings, memes, collabs, first analytics.</p>
-      </li>
-      <li>
-        <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-live-teal shadow-glow"></span>
-        <h3 class="font-bold">Phase 3 — Partnerships & Ecosystem Growth</h3>
-        <p class="text-sm text-slate-400 mt-1">Alliances, utilities in progress, community events.</p>
-      </li>
-      <li>
-        <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-live-orange shadow-glow"></span>
-        <h3 class="font-bold">Phase 4 — Utilities & Expansion</h3>
-        <p class="text-sm text-slate-400 mt-1">Utility roll-out, scaling, more listings.</p>
-      </li>
-    </ol>
+<!-- ROADMAP SECTION -->
+<section class="max-w-7xl mx-auto px-6 py-16" id="roadmap">
+  <div class="text-center mb-12">
+    <h2 class="section-title gradient-text">Roadmap</h2>
+    <p class="text-slate-400 text-lg">Our journey to building a thriving ecosystem</p>
+  </div>
+  
+  <div class="glass rounded-3xl p-8 lg:p-12 shadow-card">
+    <div class="relative">
+      <!-- Timeline line -->
+      <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-live-teal via-live-orange to-live-teal hidden lg:block"></div>
+      
+      <div class="space-y-8">
+        <!-- Phase 1 -->
+        <div class="relative pl-0 lg:pl-16">
+          <div class="absolute left-0 top-2 w-12 h-12 rounded-full bg-live-teal/20 border-4 border-live-teal shadow-glow-teal hidden lg:flex items-center justify-center">
+            <span class="text-sm font-bold">1</span>
+          </div>
+          <div class="glass rounded-2xl p-6 hover:shadow-glow">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="chip chip-teal lg:hidden">Phase 1</span>
+              <h3 class="text-xl font-bold">Launch & Community Building</h3>
+            </div>
+            <p class="text-slate-300 leading-relaxed">
+              Official launch with verified smart contract, establishment of social media presence, 
+              and daily community updates to build trust and engagement.
+            </p>
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="relative pl-0 lg:pl-16">
+          <div class="absolute left-0 top-2 w-12 h-12 rounded-full bg-live-orange/20 border-4 border-live-orange shadow-glow hidden lg:flex items-center justify-center">
+            <span class="text-sm font-bold">2</span>
+          </div>
+          <div class="glass rounded-2xl p-6 hover:shadow-glow">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="chip chip-yellow lg:hidden">Phase 2</span>
+              <h3 class="text-xl font-bold">DEX Listings & Marketing Push</h3>
+            </div>
+            <p class="text-slate-300 leading-relaxed">
+              Secure listings on major DEX platforms and CoinMarketCap/CoinGecko. Launch viral marketing 
+              campaigns, meme creation, strategic collaborations, and comprehensive analytics.
+            </p>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="relative pl-0 lg:pl-16">
+          <div class="absolute left-0 top-2 w-12 h-12 rounded-full bg-live-teal/20 border-4 border-live-teal shadow-glow-teal hidden lg:flex items-center justify-center">
+            <span class="text-sm font-bold">3</span>
+          </div>
+          <div class="glass rounded-2xl p-6 hover:shadow-glow">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="chip chip-teal lg:hidden">Phase 3</span>
+              <h3 class="text-xl font-bold">Partnerships & Ecosystem Growth</h3>
+            </div>
+            <p class="text-slate-300 leading-relaxed">
+              Form strategic alliances with other projects, begin development of token utilities, 
+              and organize community events to strengthen the ecosystem.
+            </p>
+          </div>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="relative pl-0 lg:pl-16">
+          <div class="absolute left-0 top-2 w-12 h-12 rounded-full bg-live-orange/20 border-4 border-live-orange shadow-glow hidden lg:flex items-center justify-center">
+            <span class="text-sm font-bold">4</span>
+          </div>
+          <div class="glass rounded-2xl p-6 hover:shadow-glow">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="chip chip-yellow lg:hidden">Phase 4</span>
+              <h3 class="text-xl font-bold">Utilities & Expansion</h3>
+            </div>
+            <p class="text-slate-300 leading-relaxed">
+              Roll out token utilities, scale operations, pursue additional exchange listings, 
+              and expand the LIVE Token ecosystem to new horizons.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="max-w-7xl mx-auto px-6 py-16">
+  <div class="glass rounded-3xl p-12 text-center shadow-card relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute inset-0 bg-gradient-to-br from-live-orange/10 to-live-teal/10"></div>
+    
+    <div class="relative z-10">
+      <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">
+        Ready to Join the <span class="gradient-text">LIVE</span> Community?
+      </h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+        Be part of the 30-day growth journey. Trade, hold, and grow with us on BNB Smart Chain.
+      </p>
+      
+      <div class="flex flex-wrap justify-center gap-4">
+        <a id="cta-swap" class="btn btn-primary text-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+          </svg>
+          Start Trading Now
+        </a>
+        <a id="cta-telegram" class="btn btn-secondary text-lg">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/></svg>
+          Join Telegram
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="border-t border-slate-800/60">
-  <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-400 text-sm">
-    <div>© <span id="year"></span> LIVE Token — GM 🌞 WAGMI 🚀</div>
-    <div class="flex items-center gap-3">
-      <a id="ft-twitter" class="underline decoration-dotted hover:text-live-orange" target="_blank" rel="noopener">Twitter</a>
-      <a id="ft-telegram" class="underline decoration-dotted hover:text-live-orange" target="_blank" rel="noopener">Telegram</a>
-      <a id="ft-github" class="underline decoration-dotted hover:text-live-orange" target="_blank" rel="noopener">GitHub</a>
+<footer class="border-t border-white/10 bg-live-bg/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="/logo_new.png" alt="LIVE" class="w-10 h-10 rounded-full logo-glow"/>
+          <span class="font-bold text-xl">LIVE <span class="gradient-text">Token</span></span>
+        </div>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Community-first cryptocurrency on BNB Smart Chain. Transparent, open, and built for growth.
+        </p>
+      </div>
+      
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-bold mb-4 text-slate-200">Quick Links</h4>
+        <div class="space-y-2">
+          <a href="#tokenomics" class="block text-slate-400 hover:text-live-orange transition-colors">Tokenomics</a>
+          <a href="#trading" class="block text-slate-400 hover:text-live-orange transition-colors">Trading</a>
+          <a href="#roadmap" class="block text-slate-400 hover:text-live-orange transition-colors">Roadmap</a>
+          <a id="ft-verify" class="block text-slate-400 hover:text-live-orange transition-colors" target="_blank" rel="noopener">Verify Contract</a>
+        </div>
+      </div>
+      
+      <!-- Social & Community -->
+      <div>
+        <h4 class="font-bold mb-4 text-slate-200">Community</h4>
+        <div class="flex flex-wrap gap-3">
+          <a id="ft-twitter" class="btn btn-dark p-3" target="_blank" rel="noopener" title="Twitter">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a id="ft-telegram" class="btn btn-dark p-3" target="_blank" rel="noopener" title="Telegram">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/></svg>
+          </a>
+          <a id="ft-github" class="btn btn-dark p-3" target="_blank" rel="noopener" title="GitHub">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+        </div>
+        
+        <div class="mt-6">
+          <div class="text-xs text-slate-500 mb-2">Contract Address:</div>
+          <code class="text-xs text-slate-400 font-mono break-all" id="ft-addr"></code>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bottom Bar -->
+    <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-400 text-sm">
+      <div>© <span id="year"></span> LIVE Token — GM 🌞 WAGMI 🚀</div>
+      <div class="flex items-center gap-4">
+        <span class="text-xs">Built on BNB Smart Chain</span>
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse" title="Network Active"></span>
+      </div>
     </div>
   </div>
 </footer>
 
-<!-- BOOTSTRAP JS -->
+<!-- JAVASCRIPT -->
 <script>
   (function(){
-    // Adres i rok
+    // Set contract address and year
     document.getElementById('addr').textContent = CONTRACT;
+    document.getElementById('ft-addr').textContent = CONTRACT;
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Linki
-    const set = (id, href)=>{ const a=document.getElementById(id); if(a) a.href=href; };
+    // Set all links
+    const set = (id, href) => { 
+      const el = document.getElementById(id); 
+      if(el) el.href = href; 
+    };
+    
+    // Navigation links
+    set('nav-twitter', LINKS.twitter);
+    set('nav-telegram', LINKS.telegram);
+    set('nav-github', LINKS.github);
+    
+    // Mobile menu links
+    set('mobile-twitter', LINKS.twitter);
+    set('mobile-telegram', LINKS.telegram);
+    set('mobile-github', LINKS.github);
+    
+    // Hero section
     set('btn-swap', LINKS.swap);
     set('btn-bsc', LINKS.bscscan);
     set('lnk-verify', LINKS.verify);
+    
+    // Trading section
     set('lnk-pair', LINKS.pairInfo);
     set('lnk-swap', LINKS.swap);
     set('lnk-bsc', LINKS.bscscan);
@@ -259,25 +694,55 @@
     set('lnk-dext', LINKS.dextools);
     set('lnk-twitter', LINKS.twitter);
     set('lnk-github', LINKS.github);
-    set('nav-twitter', LINKS.twitter);
-    set('nav-telegram', LINKS.telegram);
-    set('nav-github', LINKS.github);
+    
+    // CTA section
+    set('cta-swap', LINKS.swap);
+    set('cta-telegram', LINKS.telegram);
+    
+    // Footer
     set('ft-twitter', LINKS.twitter);
     set('ft-telegram', LINKS.telegram);
     set('ft-github', LINKS.github);
+    set('ft-verify', LINKS.verify);
 
-    // Copy
-    const btn = document.getElementById('btn-copy');
-    const status = document.getElementById('copy-status');
-    btn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(CONTRACT);
-        status.textContent = 'Copied!';
-        setTimeout(()=> status.textContent = '', 1400);
-      } catch { status.textContent = 'Copy failed'; }
+    // Copy contract address
+    const btnCopy = document.getElementById('btn-copy');
+    const copyStatus = document.getElementById('copy-status');
+    
+    if(btnCopy) {
+      btnCopy.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(CONTRACT);
+          copyStatus.textContent = '✓ Copied!';
+          setTimeout(() => copyStatus.textContent = '', 2000);
+        } catch {
+          copyStatus.textContent = '✗ Failed';
+          setTimeout(() => copyStatus.textContent = '', 2000);
+        }
+      });
+    }
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if(mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
   })();
 </script>
 </body>
 </html>
- 
